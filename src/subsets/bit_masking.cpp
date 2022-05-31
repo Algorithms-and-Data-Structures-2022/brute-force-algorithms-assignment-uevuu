@@ -18,7 +18,15 @@ namespace assignment {
     // 1. Внешний цикл: пробегаемся по всем битовым маскам от 0..00 до 1..11
     // 2. Внутренний цикл: проверка разрядов битовой маски и генерация подмножества, ассоциирующегося с этой маской
     // Tips: для проверки разряда бита на 1 (единицу) используйте функцию is_bit_set
+    for(int mask = 0; mask < num_subsets; mask++) {
+      std::vector<int> curr_subset;
+      for (int position = 0; position < num_elems; position++) {
+        if (is_bit_set(mask, position)) {
+          subsets[mask].push_back(position);
+        }
 
+      }
+    }
     return subsets;
   }
 

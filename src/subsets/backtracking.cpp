@@ -24,19 +24,17 @@ namespace assignment {
   void SubsetsBacktracking::generate(const std::vector<int>& set, int index, int mask,
                                      std::vector<std::vector<int>>& subsets) const {
     assert(mask >= 0 && index >= -1);
-
     // Ограничение: рассмотрены все элементы множества
     if (index == static_cast<int>(set.size()) - 1) {
-
       // ... сохранение полученного подмножества
-
+      subsets.push_back(mask2indices(set,mask));
       return;  // возвращаемся по дереву рекурсии
     }
-
     index += 1;  // рассматриваем следующий элемент
-
     // здесь должны быть рекурсивные вызовы ...
     // включаем или не включаем элемент с текущим индексом в подмножество (используя битовую маску)
+    generate(set,index,mask,subsets);
+    generate(set,index, set_bit(mask,index),subsets);
   }
 
 }  // namespace assignment
